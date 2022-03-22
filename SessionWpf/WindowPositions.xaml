@@ -1,0 +1,46 @@
+﻿<Window x:Class="SessionWpf.WindowPositions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SessionWpf"
+        mc:Ignorable="d"
+        Title="Должности" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="positionsGrid" SelectionChanged="positionsGrid_SelectionChanged" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding ID_Position}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Зарплата" Binding="{Binding Salary}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Наименование:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+            <TextBlock Grid.Row="1" Text="Зарплата:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+            <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" x:Name="nameBox"/>
+            <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5" x:Name="salaryBox" PreviewTextInput="salaryBox_PreviewTextInput"/>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="addButton" Grid.Column="0" Content="Добавить" HorizontalAlignment="Left" Margin="5" Click="addButton_Click"/>
+                <Button x:Name="deleteButton" Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" Margin="5" Click="deleteButton_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
